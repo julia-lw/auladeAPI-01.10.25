@@ -186,22 +186,26 @@
 
         // exemplo de requisição POST para adicionar uma nova pessoa
         fetch("https://crudcrud.com/api/"+token+"/pessoas", {
-            // metodo de requisição (get, post, put, delete)
+            // método de requisição (get, post, put, delete)
             method: "POST",
-            // cabeçalho da requisição(tipo de conteudo, autorizações, etc...)
+            // cabeçalho da requisição(tipo de conteúdo, autorizações, etc...)
             headers: {
                 "Content-Type": "application/json"
             },
             // corpo da requisição (dados que serão enviados)
             body: JSON.stringify({
-                logradouro: "Rua Exemplo",
-                bairro: "Laranjeiras",
-                cidade: "Rio do Sul"
+                nome: nome,
+                nascimento: nascimento,
+                endereco: endereco,
+                telefone: telefone
             })
             })
             .then(response => response.json())
             .then(data => console.log("pessoa criado:", data))
-            .catch(error => console.error("Erro no POST:", error));
+            .catch(error => console.error("Erro no POST:", error))
+            .finally(() => {
+                
+            });
 
         // exemplo de requisição PUT para atualizar uma pessoa existente
             fetch("https://crudcrud.com/api/"+token+"/pessoas/68efd2e8662a3f03e8a681c8", {
