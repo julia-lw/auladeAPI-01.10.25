@@ -178,34 +178,38 @@
             }
 
             var token = "0534e261ad554ddba7c88fe6ab8e6869";
-        // exemplo de requisição GET para listar pessoas
+         // Exemplo de requisição GET para listar pessoas
         fetch("https://crudcrud.com/api/"+token+"/pessoas")
-            .then(response => response.json())
-            .then(data => console.log("Lista de pessoas:", data))
-            .catch(error => console.error("Erro no GET:", error));
-
-        // exemplo de requisição POST para adicionar uma nova pessoa
+        .then(response => response.json())
+        .then(data => console.log("Lista de pessoas:", data))
+        .catch(error => console.error("Erro no GET:", error));
+    
+    function cadastrar() {
+        var token = "0534e261ad554ddba7c88fe6ab8e6869";
+          // Exemplo de requisição POST para adicionar uma nova pessoa
         fetch("https://crudcrud.com/api/"+token+"/pessoas", {
-            // método de requisição (get, post, put, delete)
-            method: "POST",
-            // cabeçalho da requisição(tipo de conteúdo, autorizações, etc...)
-            headers: {
-                "Content-Type": "application/json"
-            },
-            // corpo da requisição (dados que serão enviados)
-            body: JSON.stringify({
-                nome: nome,
-                nascimento: nascimento,
-                endereco: endereco,
-                telefone: telefone
-            })
-            })
-            .then(response => response.json())
-            .then(data => console.log("pessoa criado:", data))
-            .catch(error => console.error("Erro no POST:", error))
-            .finally(() => {
-                
-            });
+        // metodo de requisição (get, post, put, delete)
+        method: "POST",
+        // cabeçalho da requisição(tipo de conteudo, autorizações, etc...)
+        headers: {
+            "Content-Type": "application/json"
+        },
+        // corpo da requisição (dados que serão enviados)
+        body: JSON.stringify({
+            nome: document.getElementById('nome').value,
+            nascimento: document.getElementById('nascimento').value,
+            endereco: document.getElementById('endereco').value,
+            telefone: document.getElementById('telefone').value
+        })
+        })
+        .then(response => response.json())
+        .then(data => console.log("pessoa criado:", data))
+        .catch(error => console.error("Erro no POST:", error))
+        .finally(() => {
+            // redirecionar para a pagina inicial
+            // window.location.href = "index.php";
+        });
+    }
 
         // exemplo de requisição PUT para atualizar uma pessoa existente
             fetch("https://crudcrud.com/api/"+token+"/pessoas/68efd2e8662a3f03e8a681c8", {
